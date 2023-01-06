@@ -1,0 +1,39 @@
+******IMPORT THESE TWO THINGS*********
+import {useState} from 'react'
+import Backdrop from "@mui/material/Backdrop";
+
+
+*******add this state for opening/closing of overlay******
+ const [profileClick, setProfileClick] = useState(false);
+
+
+******function to be invoked onClick of div containing image**********
+  function handleProfileClick() {
+    setProfileClick((prevState) => !prevState);
+  }
+ 
+ 
+  ******backdrop from material UI************
+  <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={profileClick}
+        onClick={handleProfileClick}
+      >
+        <div
+          className={classes.profileOverlay}
+          style={{
+            background:`url(<Link_of_image>)`,
+            backgroundSize: "auto",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></div>
+      </Backdrop>
+      
+      
+      
+*******add this jss class to makeStyle ***********
+profileOverlay:{
+    width:'50%',
+    height:'80vh',
+ }
